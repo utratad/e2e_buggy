@@ -1,0 +1,12 @@
+appId: com.example.buggy
+---
+# logout flow
+- tapOn: "Profile button"
+- tapOn: "Logout"
+- assertVisible: "Welcome Back title\nWelcome Back"
+- stopApp #ensure user is not logged in after relaunching the app
+- launchApp
+- assertVisible: "Welcome Back title\nWelcome Back"
+
+
+

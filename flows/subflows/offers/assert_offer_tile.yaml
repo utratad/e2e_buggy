@@ -1,0 +1,16 @@
+appId: com.example.buggy
+#env:
+#  JOB_TITLE: 
+#  COMPANY:
+#  LOCATIONS_LABEL:
+---
+- assertVisible: "Job title: ${JOB_TITLE}\n${JOB_TITLE}"
+- assertVisible: "Company: ${COMPANY}\n${COMPANY}"
+# comment the line below and
+- assertVisible: "Locations: ${LOCATIONS_LABEL}\n${LOCATIONS_LABEL}"
+# uncomment the line below for as-per-app-requirement test fails
+#- assertVisible: "Locations: [A-Z]\\w+(, [A-Z]\\w+)+\n[A-Z]\\w+(, [A-Z]\\w+)+"
+# update LOCATIONS_LABEL values in applying.yaml to comma-separated format 
+- assertVisible: "Apply button for ${JOB_TITLE}"
+- runFlow:
+    file: salary_checks.yaml

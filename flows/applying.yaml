@@ -1,0 +1,58 @@
+appId: com.example.buggy
+---
+# applying flow
+# two separate subflows needed for single and multi-locations offers
+# includes profile page verification after each apply
+- assertVisible: "Job Offers screen title\nJob Offers"
+
+- runFlow:
+    file: subflows/offers/apply_and_verify_multi.yaml
+    env:
+      JOB_TITLE: "Senior QA Engineer"
+      COMPANY: "TechCorp"
+      LOCATIONS_LABEL: "WarsawBerlinLondon"
+      SELECTED_LOCATION: "Warsaw"
+
+- scrollUntilVisible:
+    element: "Job title: Junior Flutter Developer\nJunior Flutter Developer"
+    direction: DOWN
+- runFlow:
+    file: subflows/offers/apply_and_verify_single.yaml
+    env:
+      JOB_TITLE: "Junior Flutter Developer"
+      COMPANY: "StartupXYZ"
+      LOCATIONS_LABEL: "Krakow"
+      SELECTED_LOCATION: "Krakow"
+
+- scrollUntilVisible:
+    element: "Job title: QA Automation Engineer\nQA Automation Engineer"
+    direction: DOWN
+- runFlow:
+    file: subflows/offers/apply_and_verify_multi.yaml
+    env:
+      JOB_TITLE: "QA Automation Engineer"
+      COMPANY: "BigTech Inc"
+      LOCATIONS_LABEL: "WarsawGdansk"
+      SELECTED_LOCATION: "Gdansk"
+
+- scrollUntilVisible:
+    element: "Job title: Mobile QA Tester\nMobile QA Tester"
+    direction: DOWN
+- runFlow:
+    file: subflows/offers/apply_and_verify_single.yaml
+    env:
+      JOB_TITLE: "Mobile QA Tester"
+      COMPANY: "MobileFirst"
+      LOCATIONS_LABEL: "Wroclaw"
+      SELECTED_LOCATION: "Wroclaw"
+
+- scrollUntilVisible:
+    element: "Job title: Senior QA\nSenior QA"
+    direction: DOWN
+- runFlow:
+    file: subflows/offers/apply_and_verify_multi.yaml
+    env:
+      JOB_TITLE: "Senior QA"
+      COMPANY: "QualityAssurance Ltd"
+      LOCATIONS_LABEL: "WarsawBerlinLondonParis"
+      SELECTED_LOCATION: "London"

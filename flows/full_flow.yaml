@@ -1,0 +1,40 @@
+appId: com.example.buggy
+env:
+  LOGIN: test@example.com
+  PASSWORD: Test1234!
+---
+- launchApp:
+    clearState: true
+
+# registration flow
+- runFlow:
+    file: register.yaml
+    env:
+      LOGIN: ${LOGIN}
+      PASSWORD: ${PASSWORD}
+
+# back out of profile page
+- tapOn: "Back"
+- assertVisible: "Job Offers screen title\nJob Offers"
+
+# is user still logged in after app relaunch
+- stopApp
+- launchApp
+- assertVisible: "Job Offers screen title\nJob Offers"
+
+# apply to all job offers and verify them being visible in profile page
+- runFlow:
+    file: applying.yaml
+
+# logout and relaunch afterwards to ensure user is not logged in
+- runFlow:
+    file: logout.yaml
+
+# user can log back in using the same credentials
+- runFlow:
+    file: subflows/login/login_complete.yaml
+    env:
+      LOGIN: ${LOGIN}
+      PASSWORD: ${PASSWORD}
+
+

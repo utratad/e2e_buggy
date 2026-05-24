@@ -1,0 +1,13 @@
+appId: com.example.buggy
+---
+# evoke error prompts on empty fields
+- tapOn: "Login"
+- assertVisible: "Please fill all fields"
+
+# invalid credentials check
+- tapOn: "Email input field\nEmail"
+- inputText: "wrong@example.com"
+- tapOn: "Password input field\nPassword"
+- inputText: "WrongPassword1!"
+- tapOn: "Login"
+- assertVisible: "Invalid credentials"

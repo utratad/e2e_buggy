@@ -1,0 +1,19 @@
+appId: com.example.buggy
+#env:
+#  LOGIN: 
+#  PASSWORD:
+---
+# login flow
+- launchApp:
+    clearState: true
+- assertVisible: "Welcome Back title\nWelcome Back"
+- assertVisible: "Email input field\nEmail"
+- assertVisible: "Password input field\nPassword"
+- assertVisible: "Login"
+- assertVisible: "Navigate to register screen button"
+- runFlow: subflows/formvalidation/login_validation_checks.yaml
+- runFlow:
+    file: subflows/login/login_complete.yaml
+    env:
+      LOGIN: ${LOGIN}
+      PASSWORD: ${PASSWORD}

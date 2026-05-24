@@ -1,0 +1,14 @@
+appId: com.example.buggy
+---
+# register flow, additional clearState for separate entry-point test
+- launchApp:
+   clearState: true
+- assertVisible: "Navigate to register screen button"
+- tapOn: "Navigate to register screen button"
+- assertVisible: "Email input field\nEmail"
+- assertVisible: "Password input field\nPassword (min 8 characters)"
+- assertVisible: "Confirm password input field\nConfirm Password"
+- assertVisible: "Register button"
+- assertVisible: "Navigate to login screen button"
+- runFlow: subflows/formvalidation/register_validation_checks.yaml
+- runFlow: subflows/register/register_complete.yaml

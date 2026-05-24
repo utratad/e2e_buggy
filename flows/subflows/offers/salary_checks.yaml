@@ -1,0 +1,7 @@
+appId: com.example.buggy
+---
+# uncomment for as-per-app-requirements test fails
+#- assertNotVisible: "Salary: not specified\nnull"
+#- assertNotVisible:
+#    text: '\\{\"min\": \\d+, \"max\": \\d+\\}'
+- assertVisible: "Salary: \\d+-\\d+ PLN\n\\d+-\\d+ PLN"

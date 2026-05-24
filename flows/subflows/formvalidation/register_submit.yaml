@@ -1,0 +1,11 @@
+appId: com.example.buggy
+#env:
+#  FIELD_LABEL: 
+#  INPUT_VALUE:
+#  ERROR_MESSAGE:
+---
+# submiting the form flow
+- tapOn: "${FIELD_LABEL}"
+- inputText: "${INPUT_VALUE}"
+- tapOn: "Register"
+- assertVisible: "${ERROR_MESSAGE}"

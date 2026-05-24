@@ -1,0 +1,12 @@
+appId: com.example.buggy
+#env:
+#  JOB_TITLE: 
+#  COMPANY:
+#  LOCATION:
+---
+# assert entry in profile page
+- tapOn: "Profile button"
+
+- assertVisible: "Applied job title: ${JOB_TITLE}\n${JOB_TITLE}"
+- assertVisible: "Applied job company: ${COMPANY}\n${COMPANY}"
+- assertVisible: "Applied job location: ${LOCATION}\n${LOCATION}"

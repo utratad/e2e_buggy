@@ -1,0 +1,38 @@
+appId: com.example.buggy
+---
+# validation is present
+- tapOn: "Register"
+- assertVisible: "Email error: Email is required\nEmail is required"
+- assertVisible: "Password error: Password is required\nPassword is required"
+- assertVisible: "Confirm password error: Please confirm your password\nPlease confirm your password"
+- takeScreenshot: "areValidationErrorsAbove"
+
+# invalid email
+- runFlow:
+    file: register_submit.yaml
+    env:
+      FIELD_LABEL: "Email input field\nEmail"
+      INPUT_VALUE: "invalidemail"
+      ERROR_MESSAGE: "Email error: Please enter a valid email address\nPlease enter a valid email address"
+
+# password too short
+- tapOn: "Email input field\nEmail"
+- eraseText: 25
+- inputText: "test@test.com"
+- runFlow:
+    file: register_submit.yaml
+    env:
+      FIELD_LABEL: "Password input field\nPassword (min 8 characters)"
+      INPUT_VALUE: "short"
+      ERROR_MESSAGE: "Password error: Password must be at least 8 characters\nPassword must be at least 8 characters"
+
+# password mismatch (password value from previous flow)
+- tapOn: "Password input field\nPassword (min 8 characters)"
+- eraseText: 25
+- inputText: "validpassword123"
+- runFlow:
+    file: register_submit.yaml
+    env:
+      FIELD_LABEL: "Confirm password input field\nConfirm Password"
+      INPUT_VALUE: "differentpassword"
+      ERROR_MESSAGE: "Confirm password error: Passwords do not match\nPasswords do not match"

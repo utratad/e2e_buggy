@@ -1,0 +1,14 @@
+appId: com.example.buggy
+#env:
+#  LOGIN: 
+#  PASSWORD:
+---
+# successful login flow
+- tapOn: "Email input field\nEmail"
+- eraseText: 25
+- inputText: ${LOGIN}
+- tapOn: "Password input field\nPassword"
+- eraseText: 25
+- inputText: ${PASSWORD}
+- tapOn: "Login"
+- assertVisible: "Job Offers screen title\nJob Offers"

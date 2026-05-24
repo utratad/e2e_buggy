@@ -1,0 +1,24 @@
+appId: com.example.buggy
+#env:
+#  JOB_TITLE: 
+#  COMPANY:
+#  LOCATIONS_LABEL:
+#  SELECTED_LOCATION:
+---
+# asserting offer tile for single-location job offer
+# includes verifying job offers applied-for in profile page
+- runFlow:
+    file: assert_offer_tile.yaml
+    env:
+      JOB_TITLE: ${JOB_TITLE}
+      COMPANY: ${COMPANY}
+      LOCATIONS_LABEL: ${LOCATIONS_LABEL}
+- tapOn: "Apply button for ${JOB_TITLE}"
+- assertVisible: "Applied to ${JOB_TITLE} - ${SELECTED_LOCATION}"
+- runFlow:
+    file: assert_history_entry.yaml
+    env:
+      JOB_TITLE: ${JOB_TITLE}
+      COMPANY: ${COMPANY}
+      LOCATION: ${SELECTED_LOCATION}
+- tapOn: "Back"

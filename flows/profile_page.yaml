@@ -1,0 +1,10 @@
+appId: com.example.buggy
+#env:
+#  LOGIN: 
+
+---
+# profile page const elements assertions
+- tapOn: "Profile button"
+- assertVisible: "Profile screen title\nProfile"
+- assertVisible: "User email: ${LOGIN}\nEmail: ${LOGIN}"
+- assertVisible: "Application History section\nApplication History"

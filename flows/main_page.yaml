@@ -1,0 +1,31 @@
+appId: com.example.buggy
+---
+# separate offers contents check
+- assertVisible: "Job Offers screen title\nJob Offers"
+- assertVisible: "Profile button"
+
+- assertVisible: "Job title: Senior QA Engineer\nSenior QA Engineer"
+- assertVisible: "Job title: Junior Flutter Developer\nJunior Flutter Developer"
+
+- scrollUntilVisible:
+    element: "Job title: QA Automation Engineer\nQA Automation Engineer"
+    direction: DOWN
+- scrollUntilVisible:
+    element: "Job title: Mobile QA Tester\nMobile QA Tester"
+    direction: DOWN
+- scrollUntilVisible:
+    element: "Job title: Senior QA\nSenior QA"
+    direction: DOWN
+
+# salary with no value renders as "null" instead of being hidden
+- scrollUntilVisible:
+    element: "Job title: Senior QA Engineer\nSenior QA Engineer"
+    direction: UP
+#- assertVisible: "Salary: not specified\nnull"
+
+# Assert location selection popup shows all options for a multi-location offer
+- tapOn: "Apply button for Senior QA Engineer"
+- assertVisible: "Select Location for Senior QA Engineer"
+- assertVisible: "Location option: Warsaw\nWarsaw"
+- assertVisible: "Location option: Berlin\nBerlin"
+- assertVisible: "Location option: London\nLondon"

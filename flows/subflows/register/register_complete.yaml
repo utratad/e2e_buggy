@@ -1,0 +1,18 @@
+appId: com.example.buggy
+#env:
+#  LOGIN: 
+#  PASSWORD:
+---
+# complete successful account register
+- tapOn: "Email input field\nEmail"
+- eraseText: 25
+- inputText: ${LOGIN}
+- tapOn: "Password input field\nPassword (min 8 characters)"
+- eraseText: 25
+- inputText: ${PASSWORD}
+- tapOn: "Confirm password input field\nConfirm Password"
+- eraseText: 25
+- inputText: ${PASSWORD}
+- tapOn: "Register"
+- tapOn: "Profile button"
+- assertVisible: "User email: ${LOGIN}\nEmail: ${LOGIN}"
